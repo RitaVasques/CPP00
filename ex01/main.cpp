@@ -6,7 +6,7 @@
 /*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:09:16 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/12 13:30:31 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/06/12 14:37:31 by ritavasques      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int main(void)
     std::string command;
     PhoneBook   contacts;
 
+    std::cout << std::endl;
     std::cout << "WELCOME TO YOUR PHONEBOOK" << std::endl;
     while (1)
     {
+        std::cout << std::endl;
         std::cout << "1. ADD a new contact" << std::endl;
         std::cout << "2. SEARCH contacts" << std::endl;
         std::cout << "3. EXIT" << std::endl;

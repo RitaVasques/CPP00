@@ -6,7 +6,7 @@
 /*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:48:36 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/12 14:13:32 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/06/12 14:42:06 by ritavasques      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ Contact PhoneBook::createContact(int i) {
     std::string new_secret;
   
     std::cout << "CREATE NEW CONTACT" << std::endl;
-    
     std::cout << "Enter First Name:" << std::endl;
     getline(std::cin, new_name);
     if (new_name == "")
@@ -110,7 +109,6 @@ Contact PhoneBook::createContact(int i) {
         std::cout << "Enter First Name:" << std::endl;
         getline(std::cin, new_name);
     }
-
     std::cout << "Enter Last Name:" << std::endl;
     getline(std::cin, new_last);
     if (new_last == "")
@@ -119,7 +117,6 @@ Contact PhoneBook::createContact(int i) {
         std::cout << "Enter Last Name:" << std::endl;
         getline(std::cin, new_last);
     }
-    
     std::cout << "Enter Nickname:" << std::endl;
     getline(std::cin, new_nickname);
     if (new_nickname == "")
@@ -128,7 +125,6 @@ Contact PhoneBook::createContact(int i) {
         std::cout << "Enter Nickname:" << std::endl;
         getline(std::cin, new_nickname);
     }
-    
     std::cout << "Enter Number:" << std::endl;
     getline(std::cin, new_number);
     if (new_number.size() != 9)
@@ -136,8 +132,7 @@ Contact PhoneBook::createContact(int i) {
         std::cout << "Incorrect! Enter 9 digits" << std::endl;
         std::cout << "Enter Number:" << std::endl;
         getline(std::cin, new_number);
-    }
-        
+    } 
     std::cout << "Enter Darkest Secret:" << std::endl;
     getline(std::cin, new_secret);
     if (new_secret == "")
@@ -175,12 +170,14 @@ void PhoneBook::searchContact(void) {
         int idx = index[0] - '0';
         if (idx >= 0 && idx < getTotal())
         {
-            std::cout << idx << std::endl;
-            std::cout << getContact(idx).getFirstName() << std::endl;
-            std::cout << getContact(idx).getLastName() << std::endl;
-            std::cout << getContact(idx).getNickname() << std::endl;
-            std::cout << getContact(idx).getNumber() << std::endl;
-            std::cout << getContact(idx).getDarkestSecret() << std::endl;
+            std::cout << std::endl;
+            std::cout << "Index:" << idx << std::endl;
+            std::cout << "First Name: " << getContact(idx).getFirstName() << std::endl;
+            std::cout << "Last Name: " << getContact(idx).getLastName() << std::endl;
+            std::cout << "Nickname: " << getContact(idx).getNickname() << std::endl;
+            std::cout << "Number: " << getContact(idx).getNumber() << std::endl;
+            std::cout << "Darkest Secret: " << getContact(idx).getDarkestSecret() << std::endl;
+            std::cout << std::endl;
         }
         else
             std::cout << "Please enter a valid index" << std::endl;
