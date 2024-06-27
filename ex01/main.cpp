@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:09:16 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/12 14:37:31 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/06/27 18:26:18 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ int main(void)
         std::cout << std::endl;
         std::cout << "Enter your option:" << std::endl;
         getline(std::cin, command);
-        system("clear");
-        if (command == "ADD" || command[0] == '1')
+        if (command == "ADD")
             contacts.addContact();
-        else if (command == "SEARCH" || command[0] == '2')
+        else if (command == "SEARCH")
             contacts.searchContact();
-        else if (command == "EXIT" || command[0] == '3')
+        else if (command == "EXIT")
             break ;
         else
             std::cout << "Command not found" << std::endl;

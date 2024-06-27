@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:52:11 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/12 18:24:20 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/06/27 18:03:22 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void Account::makeDeposit(int deposit) {
 	this->_nbDeposits++;
 	Account::_totalAmount += deposit;
 	Account::_totalNbDeposits++;
-	std::cout << ";amount:" << Account::getTotalAmount() << ";nb_deposits:" << Account::getNbDeposits() << std::endl; 
+	std::cout << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl; 
 }
 
 bool Account::makeWithdrawal(int withdrawal) {
@@ -90,7 +90,7 @@ bool Account::makeWithdrawal(int withdrawal) {
 		this->_nbWithdrawals++;
 		Account::_totalAmount -= withdrawal;
 		Account::_totalNbWithdrawals++;
-		std::cout << ";amount:" << Account::getTotalAmount() << ";nb_withrawals:" << Account::getNbWithdrawals() << std::endl;
+		std::cout << ";amount:" << this->_amount << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 		return (true);
 	}
 }
@@ -122,4 +122,5 @@ void Account::_displayTimestamp(void) {
 	std::cout << std::setw(2) << std::setfill('0') << curTime->tm_min;
 	std::cout << std::setw(2) << std::setfill('0') << curTime->tm_sec;
 	std::cout << "] ";
+	/* std::cout << "[19920104_091532] "; */
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:48:36 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/12 14:42:06 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/06/27 18:42:25 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,14 @@ std::string PhoneBook::trimNickname(std::string newNickname)
     return (nn);
 }
 
+int PhoneBook::isNumeric(std::string number) {
+    for (int i = 0; i < number.size(); i++) {
+        if (number[i] <= '0' || number[i] >= 9)
+            return (1);
+    }
+    return (0);
+}
+
 //CREATE NEW CONTACT
 Contact PhoneBook::createContact(int i) {
     
@@ -103,7 +111,7 @@ Contact PhoneBook::createContact(int i) {
     std::cout << "CREATE NEW CONTACT" << std::endl;
     std::cout << "Enter First Name:" << std::endl;
     getline(std::cin, new_name);
-    if (new_name == "")
+    while (new_name == "")
     {
         std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter First Name:" << std::endl;
@@ -111,7 +119,7 @@ Contact PhoneBook::createContact(int i) {
     }
     std::cout << "Enter Last Name:" << std::endl;
     getline(std::cin, new_last);
-    if (new_last == "")
+    while (new_last == "")
     {
         std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter Last Name:" << std::endl;
@@ -119,7 +127,7 @@ Contact PhoneBook::createContact(int i) {
     }
     std::cout << "Enter Nickname:" << std::endl;
     getline(std::cin, new_nickname);
-    if (new_nickname == "")
+    while (new_nickname == "")
     {
         std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter Nickname:" << std::endl;
@@ -127,15 +135,15 @@ Contact PhoneBook::createContact(int i) {
     }
     std::cout << "Enter Number:" << std::endl;
     getline(std::cin, new_number);
-    if (new_number.size() != 9)
+    while (isNumeric(new_number))
     {
-        std::cout << "Incorrect! Enter 9 digits" << std::endl;
+        std::cout << "Incorrect! Enter only digits" << std::endl;
         std::cout << "Enter Number:" << std::endl;
         getline(std::cin, new_number);
     } 
     std::cout << "Enter Darkest Secret:" << std::endl;
     getline(std::cin, new_secret);
-    if (new_secret == "")
+    while (new_secret == "")
     {
         std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter Darkest Secret:" << std::endl;
