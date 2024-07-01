@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:09:16 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/27 18:26:18 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:19:40 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ int main(void)
         std::cout << "Enter your option:" << std::endl;
         getline(std::cin, command);
         if (command == "ADD")
-            contacts.addContact();
+            contacts.createContact();
         else if (command == "SEARCH")
             contacts.searchContact();
         else if (command == "EXIT")
             break ;
         else
             std::cout << "Command not found" << std::endl;
+        if (std::cin.eof())
+            return (0);
     }
     return (0);
 }

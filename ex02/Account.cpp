@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:52:11 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/27 18:03:22 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:35:54 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,5 @@ void Account::_displayTimestamp(void) {
 	std::cout << std::setw(2) << std::setfill('0') << curTime->tm_min;
 	std::cout << std::setw(2) << std::setfill('0') << curTime->tm_sec;
 	std::cout << "] ";
-	/* std::cout << "[19920104_091532] "; */
+	//std::cout << "[19920104_091532] ";
 }

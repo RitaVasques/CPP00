@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:49:00 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/27 18:40:37 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:18:16 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,15 @@ class PhoneBook {
         Contact getContact(int i);
         int getTotal(void);
         
-        std::string trimFirstName(std::string _firstName);
-        std::string trimLastName(std::string _lastName);
-        std::string trimNickname(std::string nickname);
-        int isNumeric(std::string number);
-        Contact createContact(int i);
-        void searchContact(void);
-        void addContact(void);        
+        std::string trimFirstName( std::string _firstName );
+        std::string trimLastName( std::string _lastName );
+        std::string trimNickname( std::string nickname );
+        void createContact( void );
+        void searchContact( void );
 
     private:
         Contact _contacts[8];
-        int     total;
+        int     _index;
 };
 
 #endif

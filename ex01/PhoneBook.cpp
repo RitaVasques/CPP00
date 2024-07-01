@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:48:36 by ritavasques       #+#    #+#             */
-/*   Updated: 2024/06/27 18:42:25 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:31:53 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 //CONSTRUCTOR & DESTRUCTOR
 PhoneBook::PhoneBook() {
-    this->total = 0;
+    this->_index = 0;
 }
 
 PhoneBook::~PhoneBook() {
+    std::cout << "PhoneBook destroyed" << std::endl;
 }
 
 //GETTERS
@@ -26,15 +27,7 @@ Contact PhoneBook::getContact(int i) {
 }
 
 int PhoneBook::getTotal(void) {
-    return this->total;
-}
-
-//ADD CONTACT
-void PhoneBook::addContact(void) {
-    int i = getTotal();
-    
-    this->_contacts[i % 8] = createContact(i % 8);
-    this->total++;
+    return this->_index;
 }
 
 //10 CHARACTERS WIDE
@@ -91,66 +84,62 @@ std::string PhoneBook::trimNickname(std::string newNickname)
     return (nn);
 }
 
-int PhoneBook::isNumeric(std::string number) {
-    for (int i = 0; i < number.size(); i++) {
-        if (number[i] <= '0' || number[i] >= 9)
-            return (1);
-    }
-    return (0);
-}
-
 //CREATE NEW CONTACT
-Contact PhoneBook::createContact(int i) {
+void PhoneBook::createContact( void ) {
     
-    std::string new_name;
-    std::string new_last;
-    std::string new_nickname;
-    std::string new_number;
-    std::string new_secret;
+    std::string newName;
+    std::string newLast;
+    std::string newNickname;
+    std::string newNumber;
+    std::string newSecret;
   
     std::cout << "CREATE NEW CONTACT" << std::endl;
-    std::cout << "Enter First Name:" << std::endl;
-    getline(std::cin, new_name);
-    while (new_name == "")
+    newName = "";
+    while (!std::cin.eof() && newName == "")
     {
-        std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter First Name:" << std::endl;
-        getline(std::cin, new_name);
+        if (getline(std::cin, newName) && newName != "")
+            this->_contacts[this->_index % 8].setFirstName(newName);
+        else
+            std::cout << "Field cannot be empty" << std::endl;
     }
-    std::cout << "Enter Last Name:" << std::endl;
-    getline(std::cin, new_last);
-    while (new_last == "")
+    newLast = "";
+    while (!std::cin.eof() && newLast == "")
     {
-        std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter Last Name:" << std::endl;
-        getline(std::cin, new_last);
+        if (getline(std::cin, newLast) && newLast != "")
+            this->_contacts[this->_index % 8].setLastName(newLast);
+        else
+            std::cout << "Field cannot be empty" << std::endl;
     }
-    std::cout << "Enter Nickname:" << std::endl;
-    getline(std::cin, new_nickname);
-    while (new_nickname == "")
+    newNickname = "";
+    while (!std::cin.eof() && newNickname == "")
     {
-        std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter Nickname:" << std::endl;
-        getline(std::cin, new_nickname);
+        if (getline(std::cin, newNickname) && newNickname != "")
+            this->_contacts[this->_index % 8].setNick(newNickname);
+        else
+            std::cout << "Field cannot be empty" << std::endl;
     }
-    std::cout << "Enter Number:" << std::endl;
-    getline(std::cin, new_number);
-    while (isNumeric(new_number))
+    newNumber = "";
+    while (!std::cin.eof() && newNumber == "")
     {
-        std::cout << "Incorrect! Enter only digits" << std::endl;
         std::cout << "Enter Number:" << std::endl;
-        getline(std::cin, new_number);
+        if (getline(std::cin, newNumber) && newNumber != "")
+            this->_contacts[this->_index % 8].setNumber(newNumber);
+        else
+            std::cout << "Field cannot be empty" << std::endl;
     } 
-    std::cout << "Enter Darkest Secret:" << std::endl;
-    getline(std::cin, new_secret);
-    while (new_secret == "")
+    newSecret = "";
+    while (!std::cin.eof() && newSecret == "")
     {
-        std::cout << "Field cannot be empty" << std::endl;
         std::cout << "Enter Darkest Secret:" << std::endl;
-        getline(std::cin, new_secret);
+        if (getline(std::cin, newSecret) && newSecret != "")
+            this->_contacts[this->_index % 8].setSecret(newSecret);
+        else
+            std::cout << "Field cannot be empty" << std::endl;
     }
-    Contact new_contact(i, new_name, new_last, new_nickname, new_number, new_secret);
-    return (new_contact);
+    this->_index++;
 }
 
 //SEARCH CONTACT
@@ -166,7 +155,7 @@ void PhoneBook::searchContact(void) {
     }
     else
     {
-        for (int i = 0; i < 8; ++i)
+        for (unsigned int i = 0; i < 8; ++i)
         {
             std::cout << std::setfill(' ') << std::setw(10) << std::right << i << "|";
             std::cout << std::setfill(' ') << std::setw(10) << std::right << trimFirstName(getContact(i).getFirstName()) << "|";
